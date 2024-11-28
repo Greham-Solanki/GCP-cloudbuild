@@ -17,5 +17,5 @@ steps:
       - '--container-image=gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA'
       - '--instance=solanki-flask-instance'
 options:
-  logging:  NONE  # Use Cloud Logging for logs
+
 logs_bucket: 'gs://log_bucket-solanki'  # Specify the Cloud Storage bucket for logs
