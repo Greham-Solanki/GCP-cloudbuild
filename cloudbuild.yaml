@@ -17,8 +17,8 @@ steps:
       - '-c'
       - |
         # Update metadata to include a startup script for the instance
-        gcloud compute instances add-metadata flask-instance \
-          --zone=us-east1-a \
+        gcloud compute instances add-metadata solanki-flask-instance \
+          --zone=us-east1-b \
           --metadata=startup-script='#! /bin/bash
           sudo docker pull gcr.io/$PROJECT_ID/solanki-flask-app
           sudo docker stop solanki-flask-app || true
@@ -28,6 +28,6 @@ steps:
 images:
   - 'gcr.io/$PROJECT_ID/solanki-flask-app'
 
-
 options:
-  logging: NONE
+  logging: CLOUD_LOGGING_ONLY
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
