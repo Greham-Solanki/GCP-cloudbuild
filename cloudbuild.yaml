@@ -3,12 +3,12 @@ steps:
   - name: gcr.io/cloud-builders/docker
     id: Build Docker Image
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/solanki-flask-app', '.']
-
+  
   # Step 2: Push Docker Image to Container Registry
   - name: gcr.io/cloud-builders/docker
     id: Push Docker Image
     args: ['push', 'gcr.io/$PROJECT_ID/solanki-flask-app']
-
+  
   # Step 3: Deploy to GCP Instance via Metadata Update
   - name: gcr.io/cloud-builders/gcloud
     id: Deploy to GCP
@@ -27,6 +27,3 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/solanki-flask-app'
-
-options:
- logs_bucket: 'gs://log_bucket-solanki'
