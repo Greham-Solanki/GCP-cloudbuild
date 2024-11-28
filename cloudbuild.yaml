@@ -8,15 +8,16 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA']
 
   # Step 3: SSH into the Compute Engine and update the container
+  - name: 'gcr.io/cloud-builders/gcloud'
   - args:
       - 'compute'
       - 'ssh'
       - '--zone=us-east1-a'
       - '--command='
-      - docker pull gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA
-        docker stop solanki-flask-app || true
-        docker rm solanki-flask-app || true
-        docker run -d --name solanki-flask-app -p 8080:8080 gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA
+      - 'docker pull gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA && \
+        docker stop solanki-flask-app || true && \
+        docker rm solanki-flask-app || true && \
+        docker run -d --name solanki-flask-app -p 8080:8080 gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA'
 options:
 
 logs_bucket: 'gs://log_bucket-solanki'  # Specify the Cloud Storage bucket for logs
