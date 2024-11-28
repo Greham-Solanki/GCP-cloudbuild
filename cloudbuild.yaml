@@ -12,9 +12,8 @@ steps:
       - 'compute'
       - 'ssh'
       - '--zone=us-east1-a'
-      - '--command'
-      - |
-        docker pull gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA
+      - '--command='
+      - docker pull gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA
         docker stop solanki-flask-app || true
         docker rm solanki-flask-app || true
         docker run -d --name solanki-flask-app -p 8080:8080 gcr.io/$PROJECT_ID/solanki-flask-app:$COMMIT_SHA
