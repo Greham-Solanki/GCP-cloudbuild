@@ -27,3 +27,6 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/solanki-flask-app'
+
+options:
+ logs_bucket: 'gs://log_bucket-solanki'
