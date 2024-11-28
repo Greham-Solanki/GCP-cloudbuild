@@ -4,6 +4,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_cloud():
-    return 'Hello Cloud!'
+    return 'Hello Cloud from Greham Solanki! :) '
 
 app.run(host='0.0.0.0')
