@@ -9,7 +9,7 @@ steps:
 
   # Step 3: SSH into the Compute Engine and update the container
   -  name: 'gcr.io/cloud-builders/gcloud'
-    args:
+     args:
       - 'compute'
       - 'instances'
       - 'set-container-configuration'
